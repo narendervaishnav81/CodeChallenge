@@ -1,0 +1,28 @@
+version: "3"
+services: 
+    mymongo_1:
+        image: "mongo"
+        ports:
+           - '27017:27017'
+        networks:
+           network:
+             ipv4_address: 10.5.0.6
+        
+                
+    myreader:
+        build: .
+        depends_on: 
+            - mymongo_1
+        ports:
+            - "5010:5010"
+        networks:
+           network:
+             ipv4_address: 10.5.0.5
+
+networks:
+  network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
+          gateway: 10.5.0.1
