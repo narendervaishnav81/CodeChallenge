@@ -1,0 +1,7 @@
+apiVersion: "assessment.com/v1"
+kind: project
+metadata:
+  name: project-new-object
+spec:
+  replicas: 1
+  size: 128Mi
